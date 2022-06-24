@@ -14,13 +14,13 @@ pipeline {
 		stage("test: baseline (jdk8)") {
 			agent {
 				docker {
-					image 'adoptopenjdk/openjdk8:latest'
+					image 'adoptopenjdk/openjdk8:jre8u282-b08'
 					args '-v $HOME/.m2:/tmp/jenkins-home/.m2'
 				}
 			}
 			options { timeout(time: 30, unit: 'MINUTES') }
 			steps {
-				sh 'test/run.sh'
+				bat 'test/run.sh'
 			}
 		}
 
